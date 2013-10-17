@@ -3,7 +3,7 @@ package com.example.login_test.common;
 import android.app.Application;
 
 public class GlobalApp extends Application {
-	private boolean isLogin;
+	private boolean isLogin = false;
 	private String sessionId;
 
 	public boolean isLogin(){

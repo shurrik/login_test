@@ -5,8 +5,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.login_test.R;
 import com.example.login_test.common.BaseActivity;
+import com.example.login_test.common.GlobalApp;
 import com.example.login_test.common.RequestHandler;
 import com.example.login_test.common.StaticVariable;
 
@@ -15,18 +15,21 @@ public class CheckLoginActivity extends BaseActivity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.check_login);
-		Intent intent=getIntent();
-		String username = intent.getStringExtra("username");
+		//setContentView(R.layout.check_login);
 		
-        ShowLoginTask task = new ShowLoginTask();
-        task.setActivity(this);
+        CheckLoginTask task = new CheckLoginTask(this);
         task.execute();
 	}
 	
 	
-    public class ShowLoginTask extends AsyncTask<String, Integer, String>
+    public class CheckLoginTask extends AsyncTask<String, Integer, String>
     {
+        
+        public CheckLoginTask(BaseActivity activity) {
+            super();
+            this.activity = activity;
+        }
+
         private BaseActivity activity;
         
         @Override
@@ -50,6 +53,8 @@ public class CheckLoginActivity extends BaseActivity{
             //Toast.makeText(getApplication(), result, 1).show();
             if(result.equals("success"))
             {
+                GlobalApp ga = (GlobalApp) getApplication();
+                ga.setIsLogin(true);
                 Intent intent = new Intent(CheckLoginActivity.this,MyCourseActivity.class);
                 startActivity(intent);
             }
@@ -57,14 +62,6 @@ public class CheckLoginActivity extends BaseActivity{
             {
                 Toast.makeText(getApplication(), "登录失败", 1).show(); 
             }
-        }
-
-        public BaseActivity getActivity() {
-            return activity;
-        }
-
-        public void setActivity(BaseActivity activity) {
-            this.activity = activity;
         }
         
     }

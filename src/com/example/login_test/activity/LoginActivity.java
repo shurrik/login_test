@@ -2,20 +2,8 @@
 package com.example.login_test.activity;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-
-import com.example.login_test.R;
-import com.example.login_test.R.id;
-import com.example.login_test.R.layout;
-import com.example.login_test.R.menu;
-import com.example.login_test.common.BaseActivity;
-import com.example.login_test.common.RequestHandler;
-import com.example.login_test.common.StaticVariable;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -27,6 +15,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.login_test.R;
+import com.example.login_test.common.BaseActivity;
+import com.example.login_test.common.RequestHandler;
+import com.example.login_test.common.StaticVariable;
 
 public class LoginActivity extends BaseActivity {
 
@@ -95,7 +88,9 @@ public class LoginActivity extends BaseActivity {
         rh.httpPost(url, nvps);*/
         String casUrl = StaticVariable.CAS_ROOT+"/testlogin?username="+username.getText().toString()+"&password="+password.getText().toString()+"&service="+StaticVariable.WWW_ROOT+"/sso";
         /*msg.obj = rh.httpPost(url, nvps);*/
-        msg.obj = rh.httpGet(casUrl);
+        /*msg.obj = rh.httpGet(casUrl);*/
+        /*rh.httpPost(casUrl, null);*/
+        rh.httpGet(casUrl);
         mHandler.sendMessage(msg);
         return 1;
     }

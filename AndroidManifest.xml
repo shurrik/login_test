@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.login_test.activity.LoginActivity"
+            android:name="com.example.login_test.activity.HomeActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,9 +26,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.example.login_test.activity.LoginActivity"
+            android:label="@string/app_name" >
+        </activity>        
+        <activity
             android:name="com.example.login_test.activity.CheckLoginActivity"
             android:label="@string/app_name" >
-        </activity>
+        </activity>        
         <activity
             android:name="com.example.login_test.activity.MyCourseActivity"
             android:label="@string/app_name" >
